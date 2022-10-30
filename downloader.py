@@ -72,7 +72,7 @@ def main() -> None:
         return exit(EXIT_FAILURE)
 
     m3u8: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}URL of the video (.m3u8 or .ts only):{color.STOP} ")
-    file: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}Name of your file (with the extention):{color.STOP} ")
+    file: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}Name of your file (with the extension):{color.STOP} ")
 
     system(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}")
 
