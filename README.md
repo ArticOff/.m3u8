@@ -7,10 +7,10 @@ The project is under development
 ## Quick Example
 
 ### Options...
-![image](https://user-images.githubusercontent.com/81034458/198823579-1a05b40d-e897-4d94-9838-0e991ec62c1b.png)
+![image](https://user-images.githubusercontent.com/81034458/206021102-5d3e1829-8484-4ebf-913b-7b69e5c1899c.png)
 
-### Pocess...
-![image](https://user-images.githubusercontent.com/81034458/198823695-2161339d-e1bc-400c-817b-13b02632d035.png)
+### Process...
+![image](https://user-images.githubusercontent.com/81034458/206021196-5daaba29-c9f8-4a1b-bcfe-488994013569.png)
 
 ## How to install it ?
 
