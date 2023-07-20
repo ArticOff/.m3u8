@@ -70,7 +70,7 @@ def main() -> None:
         print(f'[ {color.YELLOW}*{color.STOP} ] {color.YELLOW}File "{file}" was removed (already exists){color.STOP}')
         os.remove(file)
 
-    make_ffmpeg_command(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}",
+    make_ffmpeg_command(f"ffmpeg -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 2 -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}",
                             duration=get_audio_duration(m3u8)
                         )
     clear_last_line()
