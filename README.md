@@ -10,7 +10,7 @@ The project is under development
 ![image](https://user-images.githubusercontent.com/81034458/206021102-5d3e1829-8484-4ebf-913b-7b69e5c1899c.png)
 
 ### Process...
-![image](https://user-images.githubusercontent.com/81034458/206021196-5daaba29-c9f8-4a1b-bcfe-488994013569.png)
+![image](https://github.com/SuperZombi/.m3u8/assets/75096786/2e37c093-af71-44b2-89c1-ba7beee7bf19)
 
 ## How to install it ?
 
