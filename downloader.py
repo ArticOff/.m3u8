@@ -60,7 +60,7 @@ def ffmpeg_isInstalled() -> bool:
     output: str = popen(
         cmd="ffmpeg -version"
     ).read()
-    return "gcc" in output:
+    return "gcc" in output
 
 def main() -> None:
     system("cls" if name == "nt" else "clear")
