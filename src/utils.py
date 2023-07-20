@@ -20,6 +20,16 @@ def durationToSeconds(hms) -> float:
     seconds = (int(a[0])) * 60 * 60 + (int(a[1])) * 60 + (float(a[2]));
     return seconds
 
+def get_full_filepath(filename):
+    current_dir = os.getcwd()
+    directory, file = os.path.split(filename)
+
+    if not directory:
+        directory = current_dir
+
+    full_file_path = os.path.join(directory, file)
+    return os.path.abspath(full_file_path)
+
 def display_progress_bar(
     current: int, filesize: int, ch: str = "█", scale: float = 0.5
 ) -> None:

@@ -62,8 +62,9 @@ def main() -> None:
         print(f"[ {color.RED}!{color.STOP} ] FFMPEG is not installed. (https://ffmpeg.org/download.html)")
         return exit(EXIT_FAILURE)
 
-    m3u8: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}URL of the video (.m3u8 or .ts only):{color.STOP} ")
-    file: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}Name of your file (with the extension):{color.STOP} ")
+    m3u8: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}URL of the video (.m3u8 or .ts only):{color.STOP}\n[ {color.YELLOW}>{color.STOP} ] ")
+    file: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}Name of your file (with the extension):{color.STOP}\n[ {color.YELLOW}>{color.STOP} ] ")
+    file = get_full_filepath(file)
 
     if os.path.exists(file):
         print(f'[ {color.YELLOW}*{color.STOP} ] {color.YELLOW}File "{file}" was removed (already exists){color.STOP}')
@@ -72,8 +73,8 @@ def main() -> None:
     make_ffmpeg_command(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}",
                             duration=get_audio_duration(m3u8)
                         )
-
-    print(f"[ {color.MAGENTA}*{color.STOP} ] {color.GRAY}Thanks for using our video downloader !{color.STOP}")
+    print(f"[ {color.GREEN}<{color.STOP} ] {color.GREEN}{file}{color.STOP} ")
+    print(f"[ {color.MAGENTA}*{color.STOP} ] {color.GRAY}Thanks for using our video downloader!{color.STOP}")
     return exit(EXIT_SUCCESS)
 
 if __name__ == "__main__":
