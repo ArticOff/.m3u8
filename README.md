@@ -6,11 +6,8 @@ The project is under development
 
 ## Quick Example
 
-### Options...
-![image](https://user-images.githubusercontent.com/81034458/206021102-5d3e1829-8484-4ebf-913b-7b69e5c1899c.png)
-
 ### Process...
-![image](https://user-images.githubusercontent.com/81034458/206021196-5daaba29-c9f8-4a1b-bcfe-488994013569.png)
+![image](/.github/images/process.png)
 
 ## How to install it ?
 
