@@ -28,11 +28,9 @@ __author__ = 'Artic'
 __version__ = '1.0.0'
 __description__ = 'A simple .m3u8 video downloader.'
 
-from os import (
-    name,
-    popen,
-    system
-)
+import os
+from utils import *
+
 EXIT_FAILURE: int = 1
 EXIT_SUCCESS: int = 0
 
@@ -48,7 +46,7 @@ class color:
     RED: str = '\033[91m'
     WHITE: str = '\033[37m'
     BLACK: str = '\033[30m'
-    GRAY: str = '\033[38;2;88;88;88m'
+    GRAY: str = '\033[38;2;125;125;125m'
     MAGENTA: str = '\033[35m'
     BOLD: str = '\033[1m'
     DIM: str = '\033[2m'
@@ -56,15 +54,10 @@ class color:
     UNDERLINED: str = '\033[4m'
     STOP: str = '\033[0m'
 
-def ffmpeg_isInstalled() -> bool:
-    output: str = popen(
-        cmd="ffmpeg -version"
-    ).read()
-    return "gcc" in output
 
 def main() -> None:
-    system("cls" if name == "nt" else "clear")
-    print(f'[ {color.YELLOW}>{color.STOP} ] {color.GREEN}{color.BOLD}M3U8 VIDEO DOWNLOADER{color.STOP}\n[ {color.YELLOW}>{color.STOP} ] {color.GRAY}Made with {color.RED}<3{color.GRAY} by{color.STOP} Artic ({color.DARK_CYAN}{color.UNDERLINED}https://github.com/ArticOff{color.STOP})\n')
+    os.system("cls" if os.name == "nt" else "clear")
+    print(f'      {color.GREEN}{color.BOLD}M3U8 VIDEO DOWNLOADER{color.STOP}\n({color.DARK_CYAN}{color.UNDERLINED}https://github.com/ArticOff/.m3u8{color.STOP})\n')
     if not ffmpeg_isInstalled():
         print(f"[ {color.RED}!{color.STOP} ] FFMPEG is not installed. (https://ffmpeg.org/download.html)")
         return exit(EXIT_FAILURE)
@@ -72,7 +65,13 @@ def main() -> None:
     m3u8: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}URL of the video (.m3u8 or .ts only):{color.STOP} ")
     file: str = input(f"[ {color.MAGENTA}?{color.STOP} ] {color.GRAY}Name of your file (with the extension):{color.STOP} ")
 
-    system(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}")
+    if os.path.exists(file):
+        print(f'[ {color.YELLOW}*{color.STOP} ] {color.YELLOW}File "{file}" was removed (already exists){color.STOP}')
+        os.remove(file)
+
+    make_ffmpeg_command(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}",
+                            duration=get_audio_duration(m3u8)
+                        )
 
     print(f"[ {color.MAGENTA}*{color.STOP} ] {color.GRAY}Thanks for using our video downloader !{color.STOP}")
     return exit(EXIT_SUCCESS)
