@@ -39,9 +39,16 @@ def display_progress_bar(
     remaining = max_width - filled
     progress_bar = ch * filled + " " * remaining
     percent = round(100.0 * current / float(filesize), 1)
-    text = f" ↳ |{progress_bar}| {percent}%\r"
+    text = f"[ ↳ ] |{progress_bar}| {percent}%\r"
     sys.stdout.write(text)
     sys.stdout.flush()
+
+def clear_last_line(amount=1):
+    os.system('')
+    for i in range(amount):
+        sys.stdout.write("\033[K") #clear line
+        if i < amount-1:
+            sys.stdout.write("\033[F") #back to previous line
 
 def make_ffmpeg_command(command, duration, on_progress=None):
     process = subprocess.Popen(command, encoding=os.device_encoding(0), universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)

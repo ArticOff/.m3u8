@@ -73,7 +73,8 @@ def main() -> None:
     make_ffmpeg_command(f"ffmpeg -protocol_whitelist file,http,https,tcp,tls,crypto -i \"{m3u8}\" {file}",
                             duration=get_audio_duration(m3u8)
                         )
-    print(f"[ {color.GREEN}<{color.STOP} ] {color.GREEN}{file}{color.STOP} ")
+    clear_last_line()
+    print(f"[ {color.GREEN}>{color.STOP} ] {color.GREEN}{file}{color.STOP} ")
     print(f"[ {color.MAGENTA}*{color.STOP} ] {color.GRAY}Thanks for using our video downloader!{color.STOP}")
     return exit(EXIT_SUCCESS)
 
